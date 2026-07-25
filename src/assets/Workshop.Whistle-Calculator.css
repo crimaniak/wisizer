@@ -1,0 +1,6 @@
+@media screen and (min-width:55em) {
+	#banner { background: none; 
+        box-shadow: none;
+    }	
+	#sidebar { margin-top: 0; }
+}

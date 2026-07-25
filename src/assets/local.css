@@ -1,0 +1,222 @@
+/* suppres price display site wide */
+.price { display:none; }
+
+
+/* sitewide css */
+html, body { background: url(../img/notes-bg.jpg) repeat; }
+#header { 
+	background-image: url(../img/green-wave.jpg);	
+	background-size: cover;
+  	background-repeat: no-repeat;		
+	}
+h1, h2, h3, h4, h5, h6 { color: #900; }
+.site-title { font: bold 2.25em "Trebuchet MS", Tahoma, Verdana, sans-serif; }
+.site-title, .site-subtitle, #topactions a { 
+	color: #fafbd2;
+	text-shadow: 2px 8px 6px rgba(0,0,0,0.7),
+                 0px -5px 35px rgba(255,255,255,0.8);		
+	}
+#menu-toggle-label { background-image: url(../img/menu-white.svg); }
+#actions-toggle-label { background-image: url(../img/wrench-white.svg); }
+#search-toggle-label { background-image: url(../img/search-white.svg); }
+
+
+.note { text-indent: 0 !important; color: #333; background: #f4f4f4; padding: 1.5em; }
+.important { text-indent: 0 !important; background: #ffd; padding: 1.5em; }
+.warning { text-indent: 0 !important; background: #fdd; padding: 1.5em; }
+
+/*
+@media screen and (min-width:55em) {
+	#banner { 
+		background: url(../img/le-ballet-180.jpg); 
+		position:absolute;
+		top: 70px;
+		right: 1em;
+		width:11em;
+		height:16em;		
+		display:block;
+		padding:0;
+		background-size: cover;
+  	background-repeat: no-repeat;
+	 -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+	    -moz-box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+	         box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+		z-index: 2;
+		}	
+	#sidebar { margin-top: 15em; }
+}
+@media screen and (min-width:75em) {
+	#banner {
+		top: 100px;
+	}
+}
+*/
+/**********************************************/
+
+#currency {
+	margin-top:-20px;
+	width:100%;
+	font-size:smaller; 
+	}
+#currency-note { margin-top:-40px; }
+.price { color:green; font-weight:500; }
+.pricetable { 
+  width: 100%;
+  white-space: nowrap;	
+	line-height:1.5em;
+	}
+	.pricecell { width:100%; }
+#prices1, #prices2, #prices3, #prices4  { width: 100%;}
+
+.tblsmaller {
+	font-size:smaller;
+	line-height:1em;
+}
+
+@media screen and (min-width:35em) {
+	#currency { 
+		position:relative;
+		display:block; 
+		float:right;
+		margin-top:-80px; 
+		width:45%; 
+	}
+	#currency-note { margin-top:-40px; }	
+	#prices1, #prices2, #prices3, #prices4  {
+		float:left;
+		width: 50%;
+	}
+	#prices3 { clear:both; }
+	#prices2, #prices4 { width: 49%; margin-left:1%; }
+	.pricecell { width:100%; }
+}
+
+
+.mailform, .mailform #text, .mailform .inputbox  { width:100%; }
+.mailform .inputbox  { max-width: 15em; }
+
+.audioplayer { 
+	position: relative;
+	width:40px;
+	line-height:30px;
+	margin: 0 35px 0 5px; 
+	}
+.audio-button { display: inline-block; cursor: pointer; }
+.audio-play { position:absolute; top:-4px; left:0; width:28px; } 
+.audio-stop { position:absolute; top:-4px; left:0; width:28px; display:none; }
+.audio-play img, .audio-stop img, .audioplay { width:25px; } 
+
+
+/*
+xxa.varlink { text-decoration:none; }
+
+#xxcontent ul, #content ol { line-height: 1.5em; }
+
+xxdl { margin:0; margin-left:1em;}
+xxdl dt {font-weight:500;}
+xxdl dd {margin-bottom:0.5em;}
+
+xxh4 { margin-bottom:0em; }
+*/
+
+.scale { margin-left:3em; }
+
+.mode {position:absolute; 
+	top:220px; 
+	left:100px; 
+	width:800px; 
+	background:#ffeedd; 
+	border:1px solid #999; 
+	padding:10px; 
+}
+
+table, td { border:none; }
+table th { background: #f3e1bf; }
+
+  .quot p:before { content: '\201C ' ; font-size:2em; padding-right:.2em; margin-left:-.7em; }	
+  .xquot p:after { content: '\201D ' ; font-size:2em; padding-left:100%; margin:1em 0 0 0; }	
+  .quot {
+		border-top: 1px solid #ddd; 
+		color: #333;
+		background: #f9f9f9;
+		margin: 1em 2em 0 2em; 
+		padding: .5em 2em 0 2em; 
+		font-family: "Trebuchet MS", sans-serif;
+		}
+		 .cit:before { content: '\201D ' ; font-size:2em; padding-left:100%; margin:1em 0 0 0; }
+	.cit  { 
+		margin: 0 2em 1em 2em; 
+		text-align:right; 
+		font-size:0.9em;
+		line-height:1.5em;
+		font-family: "Trebuchet MS", sans-serif;
+		font-style:italic;
+		color:#666666;
+		background: #f9f9f9;
+		border-bottom: 1px solid #ddd;
+	}
+
+.msgbox {
+			margin:1em 3em 0 3em;
+			padding:0 10px 5px 10px;
+			border: 1px solid #ccc;
+		 -webkit-border-radius: 10px;
+		    -moz-border-radius: 10px;
+		         border-radius: 10px;
+		 /* Safari 4 does not support an inset shadow */
+		 -webkit-box-shadow:       0px 0px 5px rgba(0,0,0,.3);
+		 /* Chrome 5 does, Safari 4 will ignore this declaration */
+		 -webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,.3);
+		    -moz-box-shadow: inset 0px 0px 5px  rgba(0,0,0,.3);
+		         box-shadow: inset 0px 0px 5px rgba(0,0,0,.3);
+		 }
+.msgauthor { color:#990000; font-weight:bold;}
+.msghead {
+            xpadding: 3px;
+            }
+.msgtext {
+            xpadding:3px;
+        
+            }
+
+.lines td { vertical-align:top; border-bottom:1px solid #ccc; } 
+
+.wikimessage { color:red; font-size:1.3em;}
+.inputbutton { font-size:1.1em; }
+
+/* untoggle */
+.clicker { color:#226BAF; cursor:pointer; font-weight:300; }
+
+table.tablerules { border-top: 0px solid #000000; }
+table.tablerules td { border-top: none; border-bottom: 1px solid #000000; }
+
+
+.hide {display:none;}
+
+.toggle, dt {
+	margin:4px 0 0 0em; 
+	font-family:  Hind,'Helvetica','Arial',sans-serif;
+	font-size:110%; 
+	cursor: pointer;
+    font-weight: normal;
+	}
+h6, dt { cursor: pointer; }
+.toggle.clicker:before, h6.clicker:before {
+  font-size:120%;
+  content: "\025BE\00A0";
+  float: left;
+}
+.toggle.clicker.hidenext:before, h6.clicker.hidenext:before  {
+  font-size:120%;
+  content: "\025B8\00A0";
+}
+.toggle + *, h6 + * {
+  margin-left: 1.5em;
+}
+.xxtoggle:closed + * {
+  display: none;
+}
+@media print {
+  *[data-pmtoggle="closed"] + * { display: inherit; }
+  *[data-pmtoggle="closed"]::before { content: "\025BE\00A0"; }
+}

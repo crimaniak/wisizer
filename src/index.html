@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://music.bracker.uk/pub/html/Workshop/Whistle-Calculator.html -->
+<html><head><meta charset="UTF-8">
+<title>Bracker Music</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./assets/skin.css" type="text/css">
+  <style type="text/css"><!-- .textextract {margin:0.5em;} 
+--></style>
+	<script src="./assets/wz_jsgraphics.js" type="text/javascript" charset="utf-8"></script>
+	<script src="./assets/calculator.js" type="text/javascript"></script>
+	<script src="./assets/whistle-designer-13.js" type="text/javascript"></script>
+	<script>
+	if(window.attachEvent) window.attachEvent('onresize', DrawWhistle );
+	else if(window.addEventListener) window.addEventListener('resize', DrawWhistle );
+	</script>
+	<style>
+	h3 {margin:5px; text-align:center;}
+	.input {background-color:#fdc;}	
+	.output {background-color:#DAECDA;}
+	td {padding-left:3px;}
+	input {padding-left:3px;}
+	@media print {.button, .ubutton, #canvas, #canvasheader {display:none;} }
+	.ubutton {font-size:75%;border:1px solid #999;}
+	</style>
+  <meta name="robots" content="index,follow">
+<link rel="stylesheet" type="text/css" href="./assets/local.css">
+<link rel="stylesheet" type="text/css" href="./assets/Workshop.Whistle-Calculator.css">
+<style type="text/css">/*Amber*/ #search-toggle-label{right:10px; top:0;} </style>
+</head>
+<body>
+  <div id="page">
+  	<div id="banner">
+  		
+  	</div>
+  	<div id="headerwrap">
+<header id="header">
+	        <p><span class="site-title">Bracker Music &amp; Instruments</span>
+<br><span class="site-subtitle">play music for creativity, joy and connection</span>
+</p>
+  
+	    </header></div><div id="main">
+ <div id="content" style="width: 100%;">
+
+<nav id="titlebar">
+      		<div class="crumbtrail"> 
+<ul><li><a class="wikilink" href="https://music.bracker.uk/pub/html/Main/Home-Page.html">Home</a>
+</li><li><a class="wikilink" href="https://music.bracker.uk/pub/html/Workshop/Workshop.html">Workshop</a>
+</li><li><a class="selflink" href="https://music.bracker.uk/pub/html/Workshop/Whistle-Calculator.html">Whistle Calculator</a> 
+</li></ul></div>
+
+      	</nav>
+<div id="pagetitle">
+          <h1 class="page-title">Whistle and Flute Hole Calculator</h1>
+        </div>
+<div id="wikitext">
+<div class="noprint"> 
+<p><span style="font-size: 83%;"><em>for calculating positions for finger holes, with input for key, intonation, tube size and fine calibrations; plus additional graphical output. Based on Pete Kosel's Flutomat</em></span>
+<br><span style="font-size: 83%;"><strong>Instructions: pink fields are for input — for no hole enter 0 as hole diameter  — all measurements in mm — see legend below.</strong></span>
+</p><hr>
+</div>
+<p>
+
+</p><h1 id="keyheader" style="float:right;margin-right:1em;"></h1>
+<form name="fluteForm" action="https://music.bracker.uk/pub/html/Workshop/start" method="post">
+<table border="0">
+<tbody><tr>
+    <td>Measure in<select onchange="KeyChange()" class="input" name="convert">
+        <option selected="">mm </option><option>inches </option></select> </td>
+  <td>design for <select onchange="Calculate()" class="input" name="design">
+  <option selected="">Whistle </option><option>Flute </option></select> </td>  
+	<td>in the key of 
+	<select onchange="KeyChange(this.selectedIndex)" class="input" name="key">
+        <option selected="">select</option><option>G&nbsp;</option><option>F#&nbsp;</option><option>F&nbsp;</option><option>E&nbsp;</option><option>D#&nbsp;
+        </option><option>D&nbsp;</option><option>C#&nbsp;</option><option>C&nbsp;</option><option>B&nbsp;</option><option>Bb&nbsp;</option><option>A&nbsp;
+        </option><option>Low G#&nbsp;</option><option>Low G&nbsp;</option><option>Low F#&nbsp;</option><option>Low F&nbsp;</option><option>Low E&nbsp;</option><option>Low Eb&nbsp;
+        </option><option>Low D&nbsp;</option><option>Low C#&nbsp;</option><option>Low C&nbsp;</option><option>Low B&nbsp;</option><option>Bass Bb&nbsp;</option><option>Bass A&nbsp;
+        </option><option>Bass G#&nbsp;</option><option>Bass G&nbsp;</option><option>Bass F#&nbsp;</option><option>Bass F&nbsp;</option><option>Bass E&nbsp;</option><option>Bass Eb&nbsp;
+        </option><option>Bass D&nbsp;</option><option>Bass C#&nbsp;</option><option>Bass C&nbsp;       	
+  </option></select> </td>     
+  <td>intonation: <select onchange="KeyChange(document.forms.fluteForm.key.selectedIndex)" class="input" name="intonation">
+  <option>Just</option><option selected="">HB-trad</option><option>ET</option></select>
+   </td>
+  <td>tube OD: <input name="OuterDiam" value="15" size="3" onchange="HoleInit()" class="input"></td>
+  <td>wall: <input name="wall" value="1" size="3" onchange="HoleInit()" class="input"></td>
+  <td>bore: <input size="3" name="bore2" class="output"></td>
+  <td>optimum: <input size="2" name="optimumBore" class="output"></td>
+  <td>% diff: <input size="2" name="diff2OptBore" class="output"></td>
+	</tr>
+
+ <!--TABLE border=1>   
+    <TR><TD>Uncorrected Length:&nbsp; </TD><TD align='right><INPUT name=resultUncL size=6></TD></TR>
+    <TR><TD>&ndash; Emb Correction:&nbsp; </TD><TD align=right><INPUT name=resultEmbCor size=6></TD></TR>
+    <TR><TD>&ndash; Closed Correction:&nbsp; </TD><TD align=right><INPUT name=resultCclosed size=6></TD></TR>    
+    <TR><TD>&ndash; End Correction:&nbsp; </TD><TD align=right><INPUT name=resultEndCor size=6></TD></TR>
+    <TR><TD>= Length to Emb:&nbsp; </TD><TD align=right><INPUT name=resultEmb2 size=6 ></TD></TR>
+</TABLE--> 
+
+	</tbody></table>
+
+<h5>Hole locations <span style="font-size:70%"><span style="color: black;">— </span> Pink fields for input <span style="color: black;">— (for no hole enter 0 as diameter)</span> </span></h5>
+
+<table border="1">
+  <tbody><tr>
+    <td colspan="3" align="left">Window/embouch L x W x H &nbsp;
+    <input size="2" value="" name="diamEmb1" onchange="Calculate()" class="input">
+    	  <input size="2" value="" name="diamEmb2" onchange="Calculate()" class="input">
+    	  <input name="embWall" value="" size="2" onchange="Calculate()" class="input"> </td>
+    <td colspan="4"><input name="resultEmb" size="6" class="output">
+    + tip <input name="tipLength" value="" size="3" onchange="Calculate()" class="input">
+		= <span id="tlentext">total</span> length <input name="resultLength" size="3" class="output"></td></tr>
+  <tr>
+    <td width="7%">Hole</td>
+    <td width="20%">freq&nbsp;| note&nbsp;| c&nbsp;&#916;&nbsp;ET</td>
+    <td width="15%">hole diameter</td>
+    <td width="15%">from end</td>
+    <td width="15%" colspan="2">finger spacing</td>
+    <td width="5%">cutoff*f</td></tr>
+
+  
+  <tr>
+    <td>L1&nbsp;</td>
+    <td><input name="freq1" value="" size="4" onchange="Calculate()" class="input">
+			<input name="note1" size="1" class="output">
+			<input name="centsdiff1" size="1" class="output">
+    	<input type="button" value="+" onclick="javascript:this.form.freq1.value=RaiseFreq(this.form.freq1.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freq1.value=LowerFreq(this.form.freq1.value);Calculate()" class="ubutton"></td>
+    <td><input name="diam1" value="" size="3" onchange="Calculate()" class="input">   	
+    	<input type="button" value="+" onclick="javascript:this.form.diam1.value=IncrDiam(this.form.diam1.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.diam1.value=DecrDiam(this.form.diam1.value);Calculate()" class="ubutton"></td>
+    <td><input name="result1" size="6" class="output"></td>
+    <td style="font-size:x-small">L1-2&nbsp;</td>
+    <td><input name="spacing1" size="4" class="output"></td>
+    <td><input name="cutoff1" size="1" class="output"></td></tr>
+  <tr>
+    <td>LTh&nbsp;</td>
+     <td><input name="freq2" value="" size="4" onchange="Calculate()" class="input">
+			<input name="note2" size="1" class="output">
+			<input name="centsdiff2" size="1" class="output">
+    	<input type="button" value="+" onclick="javascript:this.form.freq2.value=RaiseFreq(this.form.freq2.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freq2.value=LowerFreq(this.form.freq2.value);Calculate()" class="ubutton"></td>
+    <td><input name="diam2" value="" size="3" onchange="Calculate()" class="input">
+    	<input type="button" value="+" onclick="javascript:this.form.diam2.value=IncrDiam(this.form.diam2.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.diam2.value=DecrDiam(this.form.diam2.value);Calculate()" class="ubutton"></td>
+    <td><input name="result2" size="6" class="output"></td>
+    <td width="5%" style="font-size:x-small">L1-T&nbsp;</td>
+    <td width="5%"><input name="spacing2" size="4" class="output"></td>
+    <td><input name="cutoff2" size="1" class="output"></td></tr>
+  <tr>
+    <td>L2&nbsp;</td>
+    <td><input name="freq3" value="" size="4" onchange="Calculate()" class="input">
+			<input name="note3" size="1" class="output">
+			<input name="centsdiff3" size="1" class="output">
+    	<input type="button" value="+" onclick="javascript:this.form.freq3.value=RaiseFreq(this.form.freq3.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freq3.value=LowerFreq(this.form.freq3.value);Calculate()" class="ubutton"></td>
+    <td><input name="diam3" value="" size="3" onchange="Calculate()" class="input">
+    	<input type="button" value="+" onclick="javascript:this.form.diam3.value=IncrDiam(this.form.diam3.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.diam3.value=DecrDiam(this.form.diam3.value);Calculate()" class="ubutton"></td>
+    <td><input name="result3" size="6" class="output"></td>
+    <td style="font-size:x-small">L2-3&nbsp;</td>
+    <td width="15%"><input name="spacing3" size="4" class="output"></td>
+    <td><input name="cutoff3" size="1" class="output"></td></tr>
+  <tr>
+    <td>L3&nbsp;</td>
+    <td><input name="freq4" value="" size="4" onchange="Calculate()" class="input">
+			<input name="note4" size="1" class="output">
+			<input name="centsdiff4" size="1" class="output">
+    	<input type="button" value="+" onclick="javascript:this.form.freq4.value=RaiseFreq(this.form.freq4.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freq4.value=LowerFreq(this.form.freq4.value);Calculate()" class="ubutton"></td>
+    <td><input name="diam4" value="" size="3" onchange="Calculate()" class="input">
+    	<input type="button" value="+" onclick="javascript:this.form.diam4.value=IncrDiam(this.form.diam4.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.diam4.value=DecrDiam(this.form.diam4.value);Calculate()" class="ubutton"></td>
+    <td><input name="result4" size="6" class="output"></td>
+    <td style="font-size:x-small">L1-3&nbsp;</td>
+    <td><input name="spacing4" size="4" class="output"></td>
+    <td><input name="cutoff4" size="1" class="output"></td></tr>
+  <tr>
+    <td>R1&nbsp;</td>
+    <td><input name="freq5" value="" size="4" onchange="Calculate()" class="input">
+			<input name="note5" size="1" class="output">
+			<input name="centsdiff5" size="1" class="output">
+    	<input type="button" value="+" onclick="javascript:this.form.freq5.value=RaiseFreq(this.form.freq5.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freq5.value=LowerFreq(this.form.freq5.value);Calculate()" class="ubutton"></td>
+		<td><input name="diam5" value="" size="3" onchange="Calculate()" class="input">
+    	<input type="button" value="+" onclick="javascript:this.form.diam5.value=IncrDiam(this.form.diam5.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.diam5.value=DecrDiam(this.form.diam5.value);Calculate()" class="ubutton"></td>
+    <td><input name="result5" size="6" class="output"></td>
+    <td style="font-size:x-small">R1-2&nbsp;</td>
+    <td><input name="spacing5" size="4" class="output"></td>
+    <td><input name="cutoff5" size="1" class="output"></td></tr>
+  <tr>
+    <td>R2&nbsp;</td>
+    <td><input name="freq6" value="" size="4" onchange="Calculate()" class="input">
+    	<input name="note6" size="1" class="output">
+    	<input name="centsdiff6" size="1" class="output">
+    	<input type="button" value="+" onclick="javascript:this.form.freq6.value=RaiseFreq(this.form.freq6.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freq6.value=LowerFreq(this.form.freq6.value);Calculate()" class="ubutton"></td>
+    <td><input name="diam6" value="" size="3" onchange="Calculate()" class="input">
+    	<input type="button" value="+" onclick="javascript:this.form.diam6.value=IncrDiam(this.form.diam6.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.diam6.value=DecrDiam(this.form.diam6.value);Calculate()" class="ubutton"></td>
+    <td><input name="result6" size="6" class="output"></td>
+    <td style="font-size:x-small">R2-3&nbsp;</td>
+    <td><input name="spacing6" size="4" class="output"></td>
+    <td><input name="cutoff6" size="1" class="output"></td></tr>
+  <tr>
+    <td>R3&nbsp;</td>
+    <td><input name="freq7" value="" size="4" onchange="Calculate()" class="input">
+			<input name="note7" size="1" class="output">
+			<input name="centsdiff7" size="1" class="output">
+    	<input type="button" value="+" onclick="javascript:this.form.freq7.value=RaiseFreq(this.form.freq7.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freq7.value=LowerFreq(this.form.freq7.value);Calculate()" class="ubutton"></td>
+    <td><input name="diam7" value="" size="3" onchange="Calculate()" class="input">
+    	<input type="button" value="+" onclick="javascript:this.form.diam7.value=IncrDiam(this.form.diam7.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.diam7.value=DecrDiam(this.form.diam7.value);Calculate()" class="ubutton"></td>
+    <td><input name="result7" size="6" class="output"></td>
+    <td style="font-size:x-small">R1-3&nbsp;</td>
+    <td><input name="spacing7" size="4" class="output"></td>
+    <td><input name="cutoff7" size="1" class="output"></td></tr>
+	<tr>  	
+    <td>End&nbsp;</td>
+    <td><input name="freqEnd" value="" size="4" onchange="Calculate()" class="input">
+    	<input name="noteEnd" size="1" class="output">
+    	<input name="centsdiffEnd" size="1" class="output">
+  	  <input type="button" value="+" onclick="javascript:this.form.freqEnd.value=RaiseFreq(this.form.freqEnd.value);Calculate()" class="ubutton">
+			<input type="button" value="-" onclick="javascript:this.form.freqEnd.value=LowerFreq(this.form.freqEnd.value);Calculate()" class="ubutton"></td>
+    <td colspan="5"><input size="3" name="bore" class="output"> bore (cylindrical)
+    	</td></tr>
+  <tr>
+  	<td></td>
+  <td style="font-size:90%">calib: A=<input name="calib" value="440" size="4" onchange="KeyChange(document.forms.fluteForm.key.selectedIndex)" class="input">
+   &nbsp;endeff: <input name="endEfFactor" value="0.5" size="1" onchange="Calculate()" class="input"></td>
+   <td style="font-size:90%">temp: <input name="tempC" value="25" size="1" onchange="Temp(this.value)" class="input">°C
+   = <input name="tempF" value="77" size="1" onchange="Temp((this.value-32)*5/9)" class="input">°F</td>
+  <td colspan="4" style="font-size:90%">slide: ± <input name="slideCents" value="50" size="2" class="input" onchange="Slide()">cents
+	  	=  ± <input name="slideLength" size="5" class="output" onchange="Slide()">
+  </td></tr>
+  </tbody></table><input type="hidden" name="key2" value="D" size="1" class="output">
+<br>
+ <div id="canvasheader"></div>
+ <div id="canvas" style="position:relative;height:50px;width:50px;">
+ 	<p style="padding-left:30em"><input onclick="Calculate();" type="button" value="   Draw   " class="input button">canvas</p>
+ </div>
+
+</form>
+
+<p></p>
+<p class="vspace"><br style="clear:both;">
+<br><br style="clear:both;">
+</p><div class="noprint"> 
+<h4>Download</h4>
+<ul><li><strong>Download calculator</strong> for off-line installation: <a class="urllink" href="https://music.bracker.uk/pub/uploads/Workshop/Whistle-Calculator-7H.zip" rel="nofollow" target="_blank">Whistle-Calculator-7H.zip </a><br>Unpack included html and js files into same folder and open html in browser.
+</li></ul><h4>Legend</h4>
+<dl><dt> tube OD </dt><dd> outer diameter of tube
+</dd><dt> wall </dt><dd> thickness of tube wall
+</dd><dt> bore </dt><dd> inner diameter of tube, outer diameter  less 2x wall thickness
+</dd><dt> optimum </dt><dd> calculated optimum bore according to lowest frequency, see also <a class="wikilink" href="https://music.bracker.uk/pub/html/Workshop/Searching-For-The-Optimal-Whistle-Bore.html">Searching For The Optimal Whistle Bore</a>
+</dd><dt> % diff </dt><dd> difference in percent of bore to optimum bore. Negative values mean narrower bore, positive values wider bore 
+</dd><dt> intonation </dt><dd> ET = equal tempered; just = just intonation (sweet intervals); HB-trad = my preferred intonation for traditional tuning, a variation of just intoned, arrived at  purely empirically.
+</dd><dt> emb </dt><dd> embouchure hole
+</dd><dt> window/embouchure L x W x H </dt><dd> length (along the tube), width (across the tube), height (wall or box thickness at window)
+</dd><dt> hole </dt><dd> T1, T2, T3 = top 3 finger holes, Th = top thumb hole, B1, B2, B3 = bottom 3 finger holes. Enter 0 for thumb hole diameter to see no thumb hole, or just ignore that value (the thumb hole value does not affect the others) 
+</dd><dt> freq </dt><dd> note frequency in Hz
+</dd><dt> note </dt><dd> common note name
+</dd><dt> c &#916; ET </dt><dd> difference in cents from equal tempered note
+</dd><dt> hole diameter </dt><dd> choosen hole diameter (drill hole first a little smaller, and check tuning)
+</dd><dt> from end </dt><dd> calculated distance of hole centre from end of tube
+</dd><dt> cutoff*f </dt><dd> factor for cutoff frequency (should be 2 or more to get second octave note)
+</dd><dt> calibration </dt><dd> calibration of middle A (standard is 440 Hz)
+</dd><dt> end effect </dt><dd> end effect factor, a factor used in the calculation to determine how far the vibrating air column protrudes beyond the end of the tube. It can vary a little, depending on the roundness of the edges at the tube end. Tweak this if all your calculated distances are off by about the same amount to your experimental results.
+</dd><dt> slide </dt><dd> can be used to calculate slide length for a given variation in tuning (±50 cents is half a semi tone up or down) 
+</dd><dt> temperature </dt><dd> temperature of air inside the tube the whistle or flute is designed for (usually a bit higher than room temperature).
+</dd></dl><div class="vspace"></div></div>
+<div class="vspace"></div>
+</div>
+
+      </div></div><footer id="footer">
+      <div class="lfloat noprint" style="margin-left: 2em;"> 
+</div><div class="desktop rfloat noprint" style="margin-right: 2em;"> 
+<p><em>web design <a class="urllink" href="http://www.softflow.uk/" rel="nofollow" target="_blank">www.softflow.uk</a></em>
+</p></div><div style="text-align: center;"> 
+<p><strong>— Bracker Music &amp; Instruments —</strong>
+<br><span class="print"><span style="font-size: 83%;">Copyright 2025 Hans Bracker</span></span>
+</p></div>
+
+    </footer>
+<div id="totop" style="display: none;">
+				<a href="https://music.bracker.uk/pub/html/Workshop/Whistle-Calculator.html#"><span></span></a>
+			</div>
+
+  </div><script type="text/javascript">
+function toggleNext(el) {
+ var nex=el.nextSibling;
+ while(nex.nodeType != 1) nex=nex.nextSibling;
+ nex.style.display=((nex.style.display=="none") ? "block" : "none" );
+}
+function getElementsByTagAndClassName(tag,cname) {
+ var tags=document.getElementsByTagName(tag);
+ var cEls=new Array();
+ for (i=0; i<tags.length; i++) {
+  var rE = new RegExp("(^|\s)" + cname + "(\s|$)");
+   if (rE.test(tags[i].className)) {
+   cEls.push(tags[i]);
+   }
+  }
+ return cEls;
+}
+function toggleNextByTagAndClassName(tag,cname) {
+ var ccn="clicker";
+ clickers=getElementsByTagAndClassName(tag,cname);
+ for (i=0; i<clickers.length; i++) {
+  clickers[i].className+=" "+ccn;
+  clickers[i].onclick=function() {toggleNext(this)}
+  toggleNext(clickers[i]);
+ }
+}
+function showNextElById(id) {
+	el = document.getElementById(id).style.display = "block";
+	window.location.href = "#"+id;
+}
+toggleNextByTagAndClassName("div","toggle");
+toggleNextByTagAndClassName("dt","toggle");
+
+//show scale examples
+(function() {
+    var beforePrint = function() {
+      scales = getElementsByTagAndClassName("div","scale");
+      for (i=0; i<scales.length; i++) {	scales[i].style.display = "block"; }
+    };
+    var afterPrint = function() {
+      scales = getElementsByTagAndClassName("div","scale");
+      for (i=0; i<scales.length; i++) {	scales[i].style.display = "none"; }
+    };
+    if (window.matchMedia) {
+        var mediaQueryList = window.matchMedia("print");
+        mediaQueryList.addListener(function(mql) {
+            if (mql.matches) { beforePrint(); }
+            else { afterPrint(); }
+        });
+    }
+    window.onbeforeprint = beforePrint;
+    window.onafterprint = afterPrint;
+}());
+
+//alert ("PRINTFLAG IS "+printflag)
+   </script>
+	<script type="text/javascript"> var mclose = 'right'; var mopen = 'left';  </script>
+	<script type="text/javascript" src="./assets/skin.js"></script>
+
+
+
+</body></html>
