@@ -139,6 +139,7 @@ const holeCount = 7;
 let tube;
 let form;
 const calc = new Calculator();
+window.addEventListener('DOMContentLoaded', HoleInit);
 
 //setting initial hole diameters relative to bore size
 //called by changes in OD and wall
@@ -259,6 +260,7 @@ function Slide() {
 }
 
 function Calculate() {
+	form = document.forms.fluteForm;
 	const { K, R, U } = getUnitSystem();
 
 	// read inputs from form into calculator
@@ -281,6 +283,7 @@ function Calculate() {
 	form.bore.value = roundUnit(calc.bore, K, R) + U;
 	form.bore2.value = roundUnit(calc.bore, K, R) + U;
 	form.optimumBore.value = roundUnit(Calculator.optimumBore(form.freqEnd.value), K, R) + U;
+	form.diff2OptBore.value = roundTo((calc.bore / Calculator.optimumBore(form.freqEnd.value) - 1) * 100, 1);
 
 	updateHeaders(form, calc);
 }
