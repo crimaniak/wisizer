@@ -22,8 +22,25 @@ src/
     whistle-designer-13.js DOM interaction and UI logic
     skin.js               Graphics library (jsGraphics)
     wz_jsgraphics.js      Graphics library (jsGraphics)
+    common_tubing.json    Tubing materials data
+    tube_sizes.json       Standard tube sizes data
+tests/
+  calculator.test.js      Unit tests for Calculator
+  tube.test.js            Unit tests for Tube
 original/                 Original source files (Windows-1252)
 ```
+
+## Testing
+
+Unit tests use Node's built-in test runner (no dependencies required).
+
+```sh
+npm test                  # run tests
+npm run test:coverage     # run tests with coverage report
+```
+
+The `Calculator` class in `src/assets/calculator.js` is DOM-free: inputs are set
+via setters, results read via getters, making it fully testable in Node.
 
 ## Usage
 

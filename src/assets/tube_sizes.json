@@ -1,0 +1,50 @@
+[
+  {
+    "name": "16 mm electrical conduit",
+    "material": "PVC electrical conduit",
+    "outerDiameter": 16.0,
+    "wall": 1.5
+  },
+  {
+    "name": "20 mm electrical conduit",
+    "material": "PVC electrical conduit",
+    "outerDiameter": 20.0,
+    "wall": 2.0
+  },
+  {
+    "name": "25 mm electrical conduit",
+    "material": "PVC electrical conduit",
+    "outerDiameter": 25.0,
+    "wall": 2.0
+  },
+  {
+    "name": "16 mm pressure pipe",
+    "material": "PVC pressure pipe",
+    "outerDiameter": 16.0,
+    "wall": 2.0
+  },
+  {
+    "name": "20 mm pressure pipe",
+    "material": "PVC pressure pipe",
+    "outerDiameter": 20.0,
+    "wall": 2.3
+  },
+  {
+    "name": "25 mm pressure pipe",
+    "material": "PVC pressure pipe",
+    "outerDiameter": 25.0,
+    "wall": 2.3
+  },
+  {
+    "name": "3/4 in PVC Schedule 40",
+    "material": "PVC pressure pipe",
+    "outerDiameter": 26.67,
+    "wall": 2.87
+  },
+  {
+    "name": "1 in PVC Schedule 40",
+    "material": "PVC pressure pipe",
+    "outerDiameter": 33.40,
+    "wall": 3.38
+  }
+]

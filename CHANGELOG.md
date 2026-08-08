@@ -1,5 +1,14 @@
 # Changelog
 
+## Tests
+
+- Added `tests/tube.test.js` (7 tests) and `tests/calculator.test.js` (74 tests) using Node's built-in `node:test` runner — zero dependencies
+- Added `package.json` with `test` and `test:coverage` scripts
+- Coverage: 100% lines / 99% branches on `calculator.js` (the one uncovered branch, `freq2Note`'s `f > 4*a`, is unreachable dead code shadowed by `f > 2*a`)
+- Golden-value regression tests verified against the app's exact D-whistle configuration (ET intonation, key index 8, OD 16/wall 1)
+- Documented legacy quirks in tests: inverted `centsDiff` sign at ±50¢, `freq2Note` returning `undefined` out of octave range
+- Added `temperature`, `embWall`, `designType` getters to `Calculator` for symmetric setter/getter pairs
+
 ## Restructure
 
 - Renamed `Bracker Music_files` directory to `assets`, updated all references in `index.html`

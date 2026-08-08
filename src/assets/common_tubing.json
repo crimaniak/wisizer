@@ -1,0 +1,71 @@
+[
+  {
+    "material": "PVC pressure pipe",
+    "advantages": [
+      "Cheap",
+      "Easy to machine",
+      "Excellent tone"
+    ],
+    "disadvantages": [
+      "Thick wall"
+    ]
+  },
+  {
+    "material": "PVC electrical conduit",
+    "advantages": [
+      "Lighter",
+      "Readily available"
+    ],
+    "disadvantages": [
+      "Dimensions vary"
+    ]
+  },
+  {
+    "material": "ABS",
+    "advantages": [
+      "Warm sound",
+      "Easy to cut"
+    ],
+    "disadvantages": [
+      "Less common"
+    ]
+  },
+  {
+    "material": "Acrylic tube",
+    "advantages": [
+      "Attractive",
+      "Transparent"
+    ],
+    "disadvantages": [
+      "Brittle"
+    ]
+  },
+  {
+    "material": "Polycarbonate",
+    "advantages": [
+      "Strong",
+      "Clear"
+    ],
+    "disadvantages": [
+      "More expensive"
+    ]
+  },
+  {
+    "material": "CPVC",
+    "advantages": [
+      "Easy to obtain"
+    ],
+    "disadvantages": [
+      "Fewer sizes"
+    ]
+  },
+  {
+    "material": "HDPE",
+    "advantages": [
+      "Tough"
+    ],
+    "disadvantages": [
+      "Difficult to glue"
+    ]
+  }
+]

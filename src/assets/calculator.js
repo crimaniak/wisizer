@@ -90,6 +90,9 @@ class Calculator {
 	get Calib() { return this._Calib; }
 	get TipLength() { return this._TipLength; }
 	get EndEfFactor() { return this._EndEfFactor; }
+	get temperature() { return this._temperature; }
+	get embWall() { return this._embWall; }
+	get designType() { return this._designType; }
 
 	// effective wall thickness at open finger holes
 	te(n) {
@@ -243,4 +246,8 @@ class Calculator {
 	static optimumBore(freqEnd) {
 		return Calculator.OPTIMUM_BORE_COEFF * Math.pow(freqEnd, Calculator.OPTIMUM_BORE_EXP);
 	}
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = { Tube, Calculator };
 }
